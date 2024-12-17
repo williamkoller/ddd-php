@@ -71,6 +71,9 @@ php execute.php
 
 ```
 
+# Estrutura do Projeto
+A estrutura do seu projeto está organizada da seguinte maneira:
+
 1. /domain
    O diretório /domain contém o núcleo do seu sistema, o "domínio". Este é o lugar onde as regras de negócios e a lógica central do sistema são implementadas, isoladas de detalhes como infraestrutura e interfaces de usuário. A pasta /domain está estruturada de forma a refletir as várias camadas do DDD.
 
