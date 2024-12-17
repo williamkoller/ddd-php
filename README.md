@@ -68,6 +68,12 @@ composer dump-autoload -o
 
 ```bash
 php execute.php
+      
+Saída:
+
+Ordem com ID: 1234 salva.
+Ordem criada com ID: 1234
+
 
 ```
 
