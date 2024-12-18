@@ -14,16 +14,15 @@ A estrutura do projeto segue o padrão do Domain-Driven Design (DDD) e usa o aut
 ```bash
 /ddd-php
   /domain
-    /entities
-    /exceptions
-    /factories
-    /repositories
-      /implementation
+    /Entities
+    /Exceptions
+    /Factories
+    /Repositories
+      /Implementation
       /OrderRepository.php
-    /services
-    /usecases
-    /value-objects
-  /public
+    /Services
+    /Usecases
+    /Value-objects
   /vendor
   /composer.json
   /execute.php
@@ -80,59 +79,62 @@ Ordem criada com ID: 1234
 # Estrutura do Projeto
 A estrutura do seu projeto está organizada da seguinte maneira:
 
-1. /domain
+### 1. /domain
    O diretório /domain contém o núcleo do seu sistema, o "domínio". Este é o lugar onde as regras de negócios e a lógica central do sistema são implementadas, isoladas de detalhes como infraestrutura e interfaces de usuário. A pasta /domain está estruturada de forma a refletir as várias camadas do DDD.
 
-/entities
+### 2. /entities
 As entidades representam objetos com identidade própria, geralmente com um ciclo de vida contínuo. Elas contêm a lógica de negócios associada e são persistidas no banco de dados.
 
-Exemplo: Order.php, Product.php
+`Exemplo: Order.php, Product.php`
 Entidades podem ter comportamentos complexos associados, como regras de validação ou operações que afetam seu estado.
 
-/exceptions
+### 3. /exceptions
 Este diretório contém as exceções específicas do domínio, que são lançadas quando ocorre algum erro dentro da lógica de negócios. As exceções personalizadas ajudam a tornar o sistema mais robusto e expressivo, permitindo que erros de negócios sejam tratados de forma apropriada.
 
-Exemplo: InvalidDiscountException.php, InvalidPriceException.php
-/factories
+`Exemplo: InvalidDiscountException.php, InvalidPriceException.php`
+
+### 4. /factories
 As fábricas são responsáveis pela criação de objetos complexos. Elas encapsulam a lógica de criação de instâncias de objetos do domínio, garantindo que todas as dependências sejam corretamente injetadas.
 
-Exemplo: OrderFactory.php
-/repositories
+`Exemplo: OrderFactory.php`
+
+### 5. /repositories
 Os repositórios são responsáveis por abstrair o acesso e manipulação dos dados persistidos. Eles fornecem métodos para buscar, armazenar e remover entidades do banco de dados. No DDD, o repositório permite que o domínio se concentre na lógica de negócios, sem se preocupar com detalhes de implementação do armazenamento de dados.
 
-Exemplo: OrderRepositoryInterface.php, ProductRepositoryInterface.php
-/implementation
+`Exemplo: OrderRepositoryInterface.php, ProductRepositoryInterface.php`
+
+### 6. /implementation
 Este subdiretório contém as implementações dos repositórios definidos nas interfaces. Aqui, você pode ter implementações que interagem com diferentes fontes de dados, como bancos de dados relacionais, NoSQL, APIs externas, etc.
 
-Exemplo: OrderRepository.php (implementação do repositório)
-/services
+`Exemplo: OrderRepository.php (implementação do repositório)`
+
+### 7. /services
 Os serviços de domínio contêm a lógica de negócios que não pertence a uma entidade ou valor específico. Esses serviços são usados quando a operação envolve mais de uma entidade ou complexidade que justifica ser tratada em um serviço separado.
 
-Exemplo: OrderDiscountService.php
-/usecases
+`Exemplo: OrderDiscountService.php`
+
+### 8. /usecases
 Os casos de uso representam as operações principais do sistema que o usuário ou o sistema chama para executar uma ação. Cada caso de uso reflete uma ação específica ou um processo do domínio que é central para o funcionamento do sistema.
 
-Exemplo: CreateOrderUseCase.php
+`Exemplo: CreateOrderUseCase.php`
 Esses arquivos contêm a orquestração da lógica de negócios e frequentemente interagem com as entidades e os repositórios para realizar operações completas.
 
-/value-objects
+### 9. /value-objects
 Os objetos de valor representam conceitos do domínio que não têm identidade própria, mas são importantes para a lógica de negócios. Eles são imutáveis e podem ser usados como parte de entidades ou serviços.
 
-Exemplo: Price.php, Discount.php
-2. /public
-   O diretório /public é onde a interface com o usuário (UI) ou as rotas públicas do sistema ficam. Geralmente, contém arquivos como o index do front-end ou os controladores que expõem as APIs. Neste caso, como o projeto está focado no DDD, este diretório pode estar vazio ou conter apenas um arquivo de execução.
+`Exemplo: Price.php, Discount.php`
 
-3. /vendor
+### 10. /vendor
    O diretório /vendor contém todas as dependências do projeto, que são gerenciadas pelo Composer. Esse diretório é criado automaticamente após a execução de composer install.
 
-4. composer.json
+### 11. composer.json
    O arquivo composer.json contém as configurações do Composer, incluindo dependências, autoloading e outras configurações importantes. Ele usa o padrão PSR-4 para autoloading, que mapeia o namespace Domain\ para o diretório domain/, permitindo que o Composer carregue automaticamente as classes.
 
-5. execute.php
+### 12.execute.php
    O arquivo execute.php é onde a execução do projeto ocorre. Esse arquivo pode ser usado para orquestrar a execução de casos de uso ou iniciar o processo de interação com o sistema. Ele pode chamar serviços, repositórios ou casos de uso diretamente, dependendo da lógica do sistema.
 
 # Como Funciona a Arquitetura
-Domínio Centralizado
+## Domínio Centralizado
 No DDD, o domínio é o foco principal. Isso significa que as entidades, exceções, serviços, repositórios e casos de uso estão todos organizados ao redor da lógica de negócios. O código de infraestrutura, como persistência de dados, comunicação de rede ou interfaces de usuário, é separado do domínio, o que garante que a lógica de negócios possa evoluir sem ser afetada por esses detalhes.
 
 Entidades encapsulam dados e regras de negócios.
