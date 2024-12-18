@@ -138,12 +138,18 @@ Os objetos de valor representam conceitos do domínio que não têm identidade p
 No DDD, o domínio é o foco principal. Isso significa que as entidades, exceções, serviços, repositórios e casos de uso estão todos organizados ao redor da lógica de negócios. O código de infraestrutura, como persistência de dados, comunicação de rede ou interfaces de usuário, é separado do domínio, o que garante que a lógica de negócios possa evoluir sem ser afetada por esses detalhes.
 
 Entidades encapsulam dados e regras de negócios.
+
 Exceções lidam com erros específicos do domínio.
 Repositórios fornecem abstrações para o armazenamento de dados.
+
 Serviços de Domínio são usados para lógica complexa.
+
 Casos de Uso orquestram as operações principais do sistema, utilizando os repositórios e serviços.
+
 Isolamento do Domínio
-Ao adotar o DDD, garantimos que o domínio permaneça isolado de detalhes de implementação como banco de dados, API ou interface com o usuário. A comunicação com o mundo exterior ocorre através de casos de uso, que implementam a lógica necessária para orquestrar as interações entre o domínio e os serviços externos.
+Ao adotar o DDD, garantimos que o domínio permaneça isolado de detalhes de implementação como banco de dados, API ou interface com o usuário. 
+
+A comunicação com o mundo exterior ocorre através de casos de uso, que implementam a lógica necessária para orquestrar as interações entre o domínio e os serviços externos.
 
 # PSR-4 Autoloading
 A arquitetura usa o PSR-4 para autoloading, onde o Composer carrega automaticamente as classes com base nos namespaces. Isso significa que o PHP encontra e carrega as classes de acordo com o caminho do diretório, sem a necessidade de incluir manualmente os arquivos. O arquivo composer.json está configurado para usar o autoloading de PSR-4, permitindo que você defina namespaces para organizar melhor as classes dentro do seu projeto.
